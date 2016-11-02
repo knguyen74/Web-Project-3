@@ -2,6 +2,7 @@
 var memory_array = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','A'];
 var memory_arrayAns = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','A'];
 var move = [0, 0, 0, 0];
+var totalMoves=0;
 var time=0;
 var timer;
 var pic=0;
@@ -32,27 +33,91 @@ function newBoard(){
 	document.getElementById("btn2").disabled = false;
 
 }
+function defaultShuffle()
+{
+	for(var a=0;a<1000000;a++)
+	{
+		var blank=memory_array.indexOf("A");
+		getTile(blank);
+		var counter=0;
+		for(var b=0;b<4;b++)
+		{
+			if(move[b]==1)
+			{
+				counter++;
+			}
+		}
+		var doSwap=Math.floor((Math.random() * counter));
+		var counter2=0;
+		for(var b=0;b<4;b++)
+		{
+			if(move[b]==1)
+			{
+				if(counter2==doSwap)
+				{
+					if(b==0)
+					{
+						var placeholder=memory_array[blank];
+						memory_array[blank]=memory_array[(blank-4)];
+						memory_array[(blank-4)]=placeholder;
+					}
+					else if(b==1)
+					{
+						var placeholder=memory_array[blank];
+						memory_array[blank]=memory_array[(blank+1)];
+						memory_array[(blank+1)]=placeholder;
+					}
+					else if(b==2)
+					{
+						var placeholder=memory_array[blank];
+						memory_array[blank]=memory_array[(blank+4)];
+						memory_array[(blank+4)]=placeholder;
+					}
+					else if(b==3)
+					{
+						var placeholder=memory_array[blank];
+						memory_array[blank]=memory_array[(blank-1)];
+						memory_array[(blank-1)]=placeholder;
+					}
+					counter2=5;
+				}
+				else
+				{
+				counter2++;	
+				}
+			}
+		}
+	}
+}
 function start()
 {
+	time=0;
+	totalMoves=0;
+
 	//put shuffle here
+	defaultShuffle();
+	updateboard();
 	document.getElementById("btn1").disabled = true;
 	document.getElementById("btn2").disabled = true;
 
-	document.getElementById("later").style.display="inline";
-	time=0;
 	timer = setInterval(myTimer, 1000);
+	document.getElementById("later").style.display="inline";
+
 	enablediv();
 }
 function startE()
 {
+	totalMoves=0;
+	time=0;
+	
 		memory_array = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','A','15'];//replace with better easy shuffle
 		updateboard();
 	document.getElementById("btn1").disabled = true;
 	document.getElementById("btn2").disabled = true;
 
-	document.getElementById("later").style.display="inline";
-	time=0;
+
 	timer = setInterval(myTimer, 1000);
+	document.getElementById("later").style.display="inline";
 	enablediv();
 }
 function disablediv()
@@ -290,6 +355,7 @@ function swap(pos)
 	}
 	if(update==true)
 	{
+		totalMoves++;
 		updateboard();
 		if(memory_array.toString()==memory_arrayAns.toString())
 		{
@@ -309,14 +375,15 @@ function saveInfo()
 
 
 	var thename=document.getElementById("name").value;
-	var person = {name:thename, theTime:(time-1)};
+	var person = {name:thename, theTime:(time-1), moves:totalMoves};
 	leaderboard.push(person);
 	
 	leaderboard.sort(function(a, b){return a.theTime - b.theTime});//sort leaderboard by time
 	
 	var theleaderboard="<table  align=\"center\">";
+	theleaderboard+="<th>Name</th><th>Moves</th><th>Time</th>"
 	for(var a = 0; a < leaderboard.length; a++){
-		theleaderboard += '<tr><td>'+leaderboard[a].name+'</td><td>'+leaderboard[a].theTime+' seconds</td></tr>';
+		theleaderboard += '<tr><td>'+leaderboard[a].name+'</td><td>'+leaderboard[a].moves+'</td><td>'+leaderboard[a].theTime+' seconds</td></tr>';
 	}
 	theleaderboard+="</table>";
 
