@@ -31,9 +31,9 @@ function newBoard() {
 	document.getElementById('memory_board').innerHTML = output;
 	updateboard();
 	disablediv();
-	document.getElementById("clock").className = "";
-	document.getElementById("lb").className = "";
-	document.getElementById("btn4").className = "";
+	document.getElementById("clock").className = "hide";
+	document.getElementById("lb").className = "hide";
+	document.getElementById("btn4").className = "hide";
 
 	document.getElementById("btn1").disabled = false;
 	document.getElementById("btn2").disabled = false;
