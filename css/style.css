@@ -6,6 +6,10 @@
 	Instructor: Louis Henry
 	Date: November 7, 2016
 */
+html,body, #body_container{
+    width: 100%;
+    height: 100%;
+}
 
 div#memory_board {
     background: #CCC;
@@ -41,6 +45,28 @@ div#memory_board>div {
     display: none;
 }
 
+#cs_logo{
+    width: 99%;
+    height: 15%;
+}
+
+#objective{
+    font-weight: normal;
+}
+
+h1,
+h2,
 .centering {
     text-align: center;
+}
+
+#bottom-right-div {
+    position: relative;
+}
+
+#bottom-right-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: right;
 }
