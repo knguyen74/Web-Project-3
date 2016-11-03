@@ -26,19 +26,48 @@ function newBoard() {
 
 	var output = '';
 	for (var i = 0; i < memory_array.length; i++) {
-		output += '<div id="tile_' + i + '" onclick="swap(' + i + ')"></div>';
+		output += '<div id="tile_' + i + '" class="tile" onclick="swap(' + i + ')"></div>';
 	}
 	document.getElementById('memory_board').innerHTML = output;
 	updateboard();
 	disablediv();
-	document.getElementById("later").style.display = "none";
-	document.getElementById("lb").style.display = "none";
-	document.getElementById("btn4").style.display = "none";
+	document.getElementById("clock").className = "";
+	document.getElementById("lb").className = "";
+	document.getElementById("btn4").className = "";
+
 	document.getElementById("btn1").disabled = false;
 	document.getElementById("btn2").disabled = false;
 
-}
 
+}
+function removehoverall()
+{
+	for(var i=0;i < memory_array.length; i++)
+	{
+		document.getElementById("tile_"+i).className = "tile";
+	}
+}
+function addhover()
+{
+	var blank = memory_array.indexOf("A");
+	getTile(blank);
+	if(move[0]==1)
+	{
+		document.getElementById("tile_"+(blank-4)).className += " movablepiece";
+	}
+	if(move[1]==1)
+	{
+		document.getElementById("tile_"+(blank+1)).className += " movablepiece";
+	}
+	if(move[2]==1)
+	{
+		document.getElementById("tile_"+(blank+4)).className += " movablepiece";
+	}
+	if(move[3]==1)
+	{
+		document.getElementById("tile_"+(blank-1)).className += " movablepiece";
+	}
+}
 function defaultShuffle() {
 	for (var a = 0; a < 1000000; a++) {
 		var blank = memory_array.indexOf("A");
@@ -87,13 +116,14 @@ function defaultShuffle() {
 function start() {
 	time = 0;
 	totalMoves = 0;
-	//put shuffle here
 	defaultShuffle();
 	updateboard();
 	document.getElementById("btn1").disabled = true;
 	document.getElementById("btn2").disabled = true;
 	timer = setInterval(myTimer, 1000);
-	document.getElementById("later").style.display = "inline";
+	document.getElementById("clock").className = "";
+	removehoverall();
+	addhover();
 	enablediv();
 }
 
@@ -105,7 +135,9 @@ function startE() {
 	document.getElementById("btn1").disabled = true;
 	document.getElementById("btn2").disabled = true;
 	timer = setInterval(myTimer, 1000);
-	document.getElementById("later").style.display = "inline";
+	document.getElementById("clock").className = "";
+	removehoverall();
+	addhover();
 	enablediv();
 }
 
@@ -121,45 +153,16 @@ function enablediv() {
 	}
 }
 
-function refreshPic0() {
+function refreshPic() {
+	var imgs=["henry.jpg","anu.jpg","bhola.jpg","zelikovsky.jpg"];
 	for (var a = 0; a < memory_array.length; a++) {
-		document.getElementById('tile_' + a).style.backgroundImage = "url(images/henry.jpg)";
-	}
-}
-
-function refreshPic1() {
-	for (var a = 0; a < memory_array.length; a++) {
-		document.getElementById('tile_' + a).style.backgroundImage = "url(images/gsu_logo.png)";
-	}
-}
-
-function refreshPic2() {
-	for (var a = 0; a < memory_array.length; a++) {
-		document.getElementById('tile_' + a).style.backgroundImage = "url(images/turkey.jpeg)";
-	}
-}
-
-function refreshPic3() {
-	for (var a = 0; a < memory_array.length; a++) {
-		document.getElementById('tile_' + a).style.backgroundImage = "url(images/santa.jpg)";
+		document.getElementById('tile_' + a).style.backgroundImage = "url(images/"+imgs[pic]+")";
 	}
 }
 
 function updateboard() {
-	switch (pic) {
-		case 0:
-			refreshPic0();
-			break;
-		case 1:
-			refreshPic1();
-			break;
-		case 2:
-			refreshPic2();
-			break;
-		case 3:
-			refreshPic3();
-			break;
-	}
+			refreshPic();
+
 	for (var a = 0; a < memory_array.length; a++) {
 		switch (memory_array[a]) {
 			case "1":
@@ -325,12 +328,14 @@ function swap(pos) {
 	}
 	if (update == true) {
 		totalMoves++;
+		removehoverall();
+		addhover();
 		updateboard();
 		if (memory_array.toString() == memory_arrayAns.toString()) {
 			disablediv();
 			clearInterval(timer);
 			alert("you win in " + (time - 1) + " seconds"); //replace with end animation
-			document.getElementById("win").style.display = "inline";
+			document.getElementById("win").className = "";
 		}
 	}
 }
@@ -340,7 +345,8 @@ function saveInfo() {
 		alert("input a value")
 	} //check if name is blank
 	else {
-		document.getElementById("win").style.display = "none";
+		document.getElementById("win").className = "hide";
+
 		var thename = document.getElementById("name").value;
 		var person = {
 			name: thename,
@@ -358,8 +364,9 @@ function saveInfo() {
 		}
 		theleaderboard += "</table>";
 		document.getElementById('lb').innerHTML = theleaderboard;
-		document.getElementById("lb").style.display = "inline";
-		document.getElementById("btn4").style.display = "inline";
+		document.getElementById("lb").className = "";
+		document.getElementById("btn4").className = "";
+
 	}
 }
 

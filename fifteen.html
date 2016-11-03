@@ -30,14 +30,14 @@
 		</script>
 		<input type="button" id="btn1" onclick="start()" value="shuffle">
 		<input type="button" id="btn2" onclick="startE()" value="shuffle easy">
-		<input type="button" id="btn4" onclick="newBoard()" value="Play Again">
-		<p id="later"><br><span id='timer'></span> seconds</p>
+		<input type="button" id="btn4"  class="hide" onclick="newBoard()" value="Play Again">
+		<p id="clock" class="hide"><br><span id='timer'></span> seconds</p>
 		<form>
-			<div id="win"> Enter Name <input id="name" type="text">
+			<div id="win" class="hide"> Enter Name <input id="name" type="text">
 				<input type="button" id="btn3" onclick="saveInfo()" value="submit">
 			</div>
 		</form>
-		<div id="lb">
+		<div id="lb" class="hide">
 			<h3>Leaderboard</h3>
 		</div>
 	</div>
