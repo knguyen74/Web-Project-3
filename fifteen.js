@@ -34,40 +34,33 @@ function newBoard() {
 	document.getElementById("clock").className = "hide";
 	document.getElementById("lb").className = "hide";
 	document.getElementById("btn4").className = "hide";
-
 	document.getElementById("btn1").disabled = false;
 	document.getElementById("btn2").disabled = false;
-
-
 }
-function removehoverall()
-{
-	for(var i=0;i < memory_array.length; i++)
-	{
-		document.getElementById("tile_"+i).className = "tile";
+
+function removehoverall() {
+	for (var i = 0; i < memory_array.length; i++) {
+		document.getElementById("tile_" + i).className = "tile";
 	}
 }
-function addhover()
-{
+
+function addhover() {
 	var blank = memory_array.indexOf("A");
 	getTile(blank);
-	if(move[0]==1)
-	{
-		document.getElementById("tile_"+(blank-4)).className += " movablepiece";
+	if (move[0] == 1) {
+		document.getElementById("tile_" + (blank - 4)).className += " movablepiece";
 	}
-	if(move[1]==1)
-	{
-		document.getElementById("tile_"+(blank+1)).className += " movablepiece";
+	if (move[1] == 1) {
+		document.getElementById("tile_" + (blank + 1)).className += " movablepiece";
 	}
-	if(move[2]==1)
-	{
-		document.getElementById("tile_"+(blank+4)).className += " movablepiece";
+	if (move[2] == 1) {
+		document.getElementById("tile_" + (blank + 4)).className += " movablepiece";
 	}
-	if(move[3]==1)
-	{
-		document.getElementById("tile_"+(blank-1)).className += " movablepiece";
+	if (move[3] == 1) {
+		document.getElementById("tile_" + (blank - 1)).className += " movablepiece";
 	}
 }
+
 function defaultShuffle() {
 	for (var a = 0; a < 1000000; a++) {
 		var blank = memory_array.indexOf("A");
@@ -154,15 +147,14 @@ function enablediv() {
 }
 
 function refreshPic() {
-	var imgs=["henry.jpg","anu.jpg","bhola.jpg","zelikovsky.jpg"];
+	var imgs = ["henry.jpg", "anu.jpg", "bhola.jpg", "zelikovsky.jpg"];
 	for (var a = 0; a < memory_array.length; a++) {
-		document.getElementById('tile_' + a).style.backgroundImage = "url(images/"+imgs[pic]+")";
+		document.getElementById('tile_' + a).style.backgroundImage = "url(images/" + imgs[pic] + ")";
 	}
 }
 
 function updateboard() {
-			refreshPic();
-
+	refreshPic();
 	for (var a = 0; a < memory_array.length; a++) {
 		switch (memory_array[a]) {
 			case "1":
@@ -366,7 +358,6 @@ function saveInfo() {
 		document.getElementById('lb').innerHTML = theleaderboard;
 		document.getElementById("lb").className = "";
 		document.getElementById("btn4").className = "";
-
 	}
 }
 
