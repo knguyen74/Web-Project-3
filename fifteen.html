@@ -1,66 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head lang="en">
-  <meta charset="UTF-8">
-  <title>matching game</title>
-  <script type="text/javascript" src="fifteen.js">
-  </script>
-	<style>
-div#memory_board{
-	background:#CCC;
-	border:#999 1px solid;
-	width:400px;
-	height:400px;
-	padding:0px;
-	margin:0px auto;
-}
-div#memory_board > div{
-	background: url(tile_bg.jpg) no-repeat;
-	border:#000 2px solid;
-	width:96px;
-	height:96px;
-	float:left;
-	margin:0px;
-	padding:0px;
-	font-size:64px;
-	cursor:pointer;
-	text-align:center;
-}
-	#later
-	{
-	display: none;
-	}
-	#win
-	{
-	display: none;
-	}
-	#lb
-	{
-	display: none;
-	}
-	.centering{
-	text-align:center;}
-	
 
-	</style>
-  </head>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>matching game</title>
+	<script type="text/javascript" src="fifteen.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
 <body>
-  <div class="centering">
+	<div class="centering">
 
 
-	<div id="memory_board"></div>
-	<script>newBoard();</script>
+		<div id="memory_board"></div>
+		<script>
+			newBoard();
+		</script>
 
-	<input type="button" id="btn1" onclick ="start()" value="shuffle">
-	<input type="button" id="btn2" onclick ="startE()" value="shuffle easy">
-	<input type="button" id="btn4" onclick ="newBoard()" value="Play Again">
+		<input type="button" id="btn1" onclick="start()" value="shuffle">
+		<input type="button" id="btn2" onclick="startE()" value="shuffle easy">
+		<input type="button" id="btn4" onclick="newBoard()" value="Play Again">
 
 
-	   <p id="later"><br><span id='timer'></span> seconds</p>
-	   <form>
-	<div id="win" >	Enter Name <input id="name" type="text"> <input type="button" id="btn3" onclick ="saveInfo()" value="submit"></div>
-	</form>
-	<div id="lb"><h3>Leaderboard</h3></div>
+		<p id="later"><br><span id='timer'></span> seconds</p>
+		<form>
+			<div id="win"> Enter Name <input id="name" type="text"> <input type="button" id="btn3" onclick="saveInfo()" value="submit"></div>
+		</form>
+		<div id="lb">
+			<h3>Leaderboard</h3>
+		</div>
 	</div>
 </body>
+
 </html>
