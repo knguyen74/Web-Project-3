@@ -43,7 +43,7 @@ function createPicOption() {
 function changePic() {
 	/*Need Fix: After the game is over and "Change Picture" button is clicked, the new board shows, but "shuffle" and "shuffle easy" buttons are disabled */
 	$("#memory_board").show();
-	$("#after_game").html("<div class='Homer'></div>").hide();
+	$("#after_game").html("<div class='ending_gif'></div>").hide();
 	pic = document.getElementById('pictures').value;
 	updateboard();
 }

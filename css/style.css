@@ -107,6 +107,6 @@ h2,
 .ending_gif {
     height: 270px;
     width: 390px;
-    background: url('gifs/finished.gif');
+    background: url('../gifs/finished.gif');
     margin: auto;
 }
