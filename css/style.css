@@ -58,7 +58,9 @@ div#memory_board {
     background-color: #FFFFFF;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid black;
 }
 
