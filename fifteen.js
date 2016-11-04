@@ -48,6 +48,7 @@ function newPic()
 
 
 function newBoard() {
+	document.getElementById("objective").innerHTML="Solve this puzzle before your classes for next semester are full.";
 	pic = Math.floor((Math.random() * 4));
 	var output = '';
 
@@ -359,6 +360,7 @@ function swap(pos) {
 		if (memory_array.toString() == memory_arrayAns.toString()) {
 			disablediv();
 			clearInterval(timer);
+			document.getElementById("objective").innerHTML="Sorry, the classes are already full before you even had the chance to register.";
 			$("#memory_board").hide();
 			$("#after_game").html("<div class='ending_gif'></div>");
 			document.getElementById("win").className = "";
