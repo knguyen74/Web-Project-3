@@ -24,13 +24,22 @@
 	</h2>
 	<div class="centering">
 		<div id="memory_board"></div>
+		
+		<div id="picOptions">
+		<div id="selectPic" class="floatL"></div>		
+		<input type="button" id="btn5" class="floatL" onclick="changePic()" value="Change Picture">
+		</div>
+		
 		<script>
 			/*global newBoard*/
 			newBoard();
 		</script>
+		
+		<div class="moreButtons">
 		<input type="button" id="btn1" onclick="start()" value="shuffle">
 		<input type="button" id="btn2" onclick="startE()" value="shuffle easy">
 		<input type="button" id="btn4" class="hide" onclick="newBoard()" value="Play Again">
+		</div>
 		<p id="clock" class="hide"><br><span id='timer'></span> seconds</p>
 		<form>
 			<div id="win" class="hide"> Enter Name <input id="name" type="text">

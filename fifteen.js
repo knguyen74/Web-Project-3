@@ -21,6 +21,38 @@ function myTimer() {
 	time++;
 }
 
+function createPicOption()
+{
+	var picOptions='';
+	if(pic==0)
+	{
+		picOptions='<select id="pictures"><option value="0" selected>Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
+	}
+	if(pic==1)
+	{
+		picOptions='<select id="pictures"><option value="0">Henry</option><option value="1" selected>Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
+
+	}
+	if(pic==2)
+	{
+		picOptions='<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2" selected>Bhola</option><option value="3">Zelikovsky</option></select>';
+
+	}
+	if(pic==3)
+	{
+		picOptions='<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3" selected>Zelikovsky</option></select>';
+
+	}
+	document.getElementById('selectPic').innerHTML = picOptions;
+}
+
+function changePic()
+{
+	pic=document.getElementById('pictures').value;
+	updateboard();
+}
+
+
 function newBoard() {
 	pic = Math.floor((Math.random() * 4));
 
@@ -31,6 +63,7 @@ function newBoard() {
 	document.getElementById('memory_board').innerHTML = output;
 	updateboard();
 	disablediv();
+	createPicOption();
 	document.getElementById("clock").className = "hide";
 	document.getElementById("lb").className = "hide";
 	document.getElementById("btn4").className = "hide";
