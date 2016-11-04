@@ -80,7 +80,7 @@ td {
 
 h1,
 h2,
-.centering {
+.centering, #objective {
     text-align: center;
 }
 
