@@ -60,9 +60,12 @@ function newBoard() {
 	updateboard();
 	disablediv();
 	createPicOption();
+
 	document.getElementById("clock").className = "hide";
 	document.getElementById("lb").className = "hide";
 	document.getElementById("btn4").className = "hide";
+	document.getElementById("btn1").className = "";
+	document.getElementById("btn2").className = "";
 	document.getElementById("btn1").disabled = false;
 	document.getElementById("btn2").disabled = false;
 	
@@ -134,6 +137,22 @@ function defaultShuffle() {
 					counter2++;
 				}
 			}
+		}
+	}
+	while(memory_array.indexOf("A")!=15)
+	{
+		var blank = memory_array.indexOf("A");
+		if(blank<12)
+		{
+			var placeholder = memory_array[blank];
+			memory_array[blank] = memory_array[(blank + 4)];
+			memory_array[(blank + 4)] = placeholder;
+		}
+		else
+		{
+			var placeholder = memory_array[blank];
+			memory_array[blank] = memory_array[(blank + 1)];
+			memory_array[(blank + 1)] = placeholder;
 		}
 	}
 }
@@ -359,6 +378,9 @@ function swap(pos) {
 		updateboard();
 		if (memory_array.toString() == memory_arrayAns.toString()) {
 			disablediv();
+			document.getElementById("pictures").className = "hide";
+			document.getElementById("btn1").className = "hide";
+			document.getElementById("btn2").className = "hide";
 			clearInterval(timer);
 			document.getElementById("objective").innerHTML="Sorry, the classes are already full before you even had the chance to register.";
 			$("#memory_board").hide();
