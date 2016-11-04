@@ -41,9 +41,6 @@ function createPicOption() {
 }
 
 function changePic() {
-	/*Need Fix: After the game is over and "Change Picture" button is clicked, the new board shows, but "shuffle" and "shuffle easy" buttons are disabled */
-	$("#memory_board").show();
-	$("#after_game").html("<div class='ending_gif'></div>").hide();
 	pic = document.getElementById('pictures').value;
 	updateboard();
 }
@@ -56,7 +53,7 @@ function newBoard() {
 	for (var i = 0; i < memory_array.length; i++) {
 		output += '<div id="tile_' + i + '" class="tile" onclick="swap(' + i + ')"></div>';
 	}
-
+	
 	document.getElementById('memory_board').innerHTML = output;
 	updateboard();
 	disablediv();
@@ -66,6 +63,9 @@ function newBoard() {
 	document.getElementById("btn4").className = "hide";
 	document.getElementById("btn1").disabled = false;
 	document.getElementById("btn2").disabled = false;
+	
+	$("#memory_board").show();
+	$("#after_game").html("<div class='ending_gif'></div>").hide();
 }
 
 function removehoverall() {
