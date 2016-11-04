@@ -12,33 +12,38 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>Game of Fifteen</title>
+	<script src="jquery/jquery.js"></script>
 	<script type="text/javascript" src="fifteen.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
 <body>
+	<audio autoplay="autoplay" loop="loop">
+		<source src="music/start.mp3">
+	</audio>
+
 	<img id="cs_logo" src="images/cs_logo.png" alt="CS Logo" />
 	<h1>Class Registration Ticket</h1>
 	<h2>Objective:
 		<p id="objective">Solve this puzzle before your classes for next semester is full.</p>
 	</h2>
+
 	<div class="centering">
 		<div id="memory_board"></div>
-		
 		<div id="picOptions">
-		<div id="selectPic" class="floatL"></div>		
-		<input type="button" id="btn5" class="floatL" onclick="changePic()" value="Change Picture">
+			<div id="selectPic" class="floatL"></div>
+			<input type="button" id="btn5" class="floatL" onclick="changePic()" value="Change Picture">
 		</div>
-		
+
 		<script>
 			/*global newBoard*/
 			newBoard();
 		</script>
-		
+
 		<div class="moreButtons">
-		<input type="button" id="btn1" onclick="start()" value="shuffle">
-		<input type="button" id="btn2" onclick="startE()" value="shuffle easy">
-		<input type="button" id="btn4" class="hide" onclick="newBoard()" value="Play Again">
+			<input type="button" id="btn1" onclick="start()" value="shuffle">
+			<input type="button" id="btn2" onclick="startE()" value="shuffle easy">
+			<input type="button" id="btn4" class="hide" onclick="newBoard()" value="Play Again">
 		</div>
 		<p id="clock" class="hide"><br><span id='timer'></span> seconds</p>
 		<form>

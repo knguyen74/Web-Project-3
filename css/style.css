@@ -36,18 +36,30 @@ div#memory_board {
     line-height: 96px;
 }
 
-#picOptions{
-	width: 200px;
+#picOptions {
+    width: 200px;
     height: 20px;
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
-.floatL{
-	float:left;
+.floatL {
+    float: left;
 }
 
 .hide {
     display: none;
+}
+
+.even {
+    background-color: #96A9C9;
+}
+
+.odd {
+    background-color: #FFFFFF;
+}
+
+table, th, td {
+    border: 1px solid black;
 }
 
 #cs_logo {
@@ -70,14 +82,13 @@ h2,
     text-align: center;
 }
 
-.moreButtons
-{
-	padding:0px;
-	width: 200px;
+.moreButtons {
+    padding: 0px;
+    width: 200px;
     height: 20px;
-	margin-left:auto;
-	margin-right:auto;
-	text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 #bottom-right-div {

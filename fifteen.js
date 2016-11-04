@@ -21,34 +21,28 @@ function myTimer() {
 	time++;
 }
 
-function createPicOption()
-{
-	var picOptions='';
-	if(pic==0)
-	{
-		picOptions='<select id="pictures"><option value="0" selected>Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
+function createPicOption() {
+	var picOptions = '';
+	if (pic == 0) {
+		picOptions = '<select id="pictures"><option value="0" selected>Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
 	}
-	if(pic==1)
-	{
-		picOptions='<select id="pictures"><option value="0">Henry</option><option value="1" selected>Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
+	if (pic == 1) {
+		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1" selected>Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
 
 	}
-	if(pic==2)
-	{
-		picOptions='<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2" selected>Bhola</option><option value="3">Zelikovsky</option></select>';
+	if (pic == 2) {
+		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2" selected>Bhola</option><option value="3">Zelikovsky</option></select>';
 
 	}
-	if(pic==3)
-	{
-		picOptions='<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3" selected>Zelikovsky</option></select>';
+	if (pic == 3) {
+		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3" selected>Zelikovsky</option></select>';
 
 	}
 	document.getElementById('selectPic').innerHTML = picOptions;
 }
 
-function changePic()
-{
-	pic=document.getElementById('pictures').value;
+function changePic() {
+	pic = document.getElementById('pictures').value;
 	updateboard();
 }
 
@@ -361,6 +355,7 @@ function swap(pos) {
 			clearInterval(timer);
 			alert("you win in " + (time - 1) + " seconds"); //replace with end animation
 			document.getElementById("win").className = "";
+			//document.getElementById("centering").innerHTML = "YOU WON!!!!";
 		}
 	}
 }
@@ -385,7 +380,12 @@ function saveInfo() {
 		var theleaderboard = "<table  align=\"center\">";
 		theleaderboard += "<th>Name</th><th>Moves</th><th>Time</th>"
 		for (var a = 0; a < leaderboard.length; a++) {
-			theleaderboard += '<tr><td>' + leaderboard[a].name + '</td><td>' + leaderboard[a].moves + '</td><td>' + leaderboard[a].theTime + ' seconds</td></tr>';
+			if (a % 2 === 0) {
+				theleaderboard += '<tr class="even"><td>' + leaderboard[a].name + '</td><td>' + leaderboard[a].moves + '</td><td>' + leaderboard[a].theTime + ' seconds</td></tr>';
+			}
+			else {
+				theleaderboard += '<tr class="odd"><td>' + leaderboard[a].name + '</td><td>' + leaderboard[a].moves + '</td><td>' + leaderboard[a].theTime + ' seconds</td></tr>';
+			}
 		}
 		theleaderboard += "</table>";
 		document.getElementById('lb').innerHTML = theleaderboard;
