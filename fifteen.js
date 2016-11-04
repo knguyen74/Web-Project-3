@@ -40,10 +40,12 @@ function createPicOption() {
 	document.getElementById('selectPic').innerHTML = picOptions;
 }
 
-function changePic() {
-	pic = document.getElementById('pictures').value;
+$(document).ready(function(){
+    $('#pictures').change(function(){
+	pic = this.value;
 	updateboard();
-}
+    });
+});
 
 
 function newBoard() {
@@ -65,7 +67,7 @@ function newBoard() {
 	document.getElementById("btn2").disabled = false;
 	
 	$("#memory_board").show();
-	$("#after_game").html("<div class='ending_gif'></div>").hide();
+	document.getElementById("after_game").innerHTML = "";
 }
 
 function removehoverall() {
@@ -143,6 +145,7 @@ function start() {
 	updateboard();
 	document.getElementById("btn1").disabled = true;
 	document.getElementById("btn2").disabled = true;
+	document.getElementById("timer").innerHTML = time;
 	timer = setInterval(myTimer, 1000);
 	document.getElementById("clock").className = "";
 	removehoverall();
@@ -157,6 +160,7 @@ function startE() {
 	updateboard();
 	document.getElementById("btn1").disabled = true;
 	document.getElementById("btn2").disabled = true;
+	document.getElementById("timer").innerHTML = time;
 	timer = setInterval(myTimer, 1000);
 	document.getElementById("clock").className = "";
 	removehoverall();
