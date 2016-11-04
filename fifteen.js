@@ -26,26 +26,25 @@ function myTimer() {
 function createPicOption() {
 	var picOptions = '';
 	if (pic == 0) {
-		picOptions = '<select id="pictures"><option value="0" selected>Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
+		picOptions = '<select id="pictures" onchange="newPic()"><option value="0" selected>Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
 	}
 	if (pic == 1) {
-		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1" selected>Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
+		picOptions = '<select id="pictures" onchange="newPic()"><option value="0">Henry</option><option value="1" selected>Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
 	}
 	if (pic == 2) {
-		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2" selected>Bhola</option><option value="3">Zelikovsky</option></select>';
+		picOptions = '<select id="pictures" onchange="newPic()"><option value="0">Henry</option><option value="1">Anu</option><option value="2" selected>Bhola</option><option value="3">Zelikovsky</option></select>';
 	}
 	if (pic == 3) {
-		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3" selected>Zelikovsky</option></select>';
+		picOptions = '<select id="pictures" onchange="newPic()"><option value="0">Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3" selected>Zelikovsky</option></select>';
 	}
 	document.getElementById('selectPic').innerHTML = picOptions;
 }
 
-$(document).ready(function(){
-    $('#pictures').change(function(){
-	pic = this.value;
-	updateboard();
-    });
-});
+function newPic()
+{
+		pic=document.getElementById('pictures').value;
+		updateboard();
+}
 
 
 function newBoard() {
