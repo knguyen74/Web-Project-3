@@ -7,6 +7,8 @@
 	Date: November 7, 2016
 */
 
+/*global $*/
+
 var memory_array = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', 'A'];
 var memory_arrayAns = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', 'A'];
 var move = [0, 0, 0, 0];
@@ -28,20 +30,20 @@ function createPicOption() {
 	}
 	if (pic == 1) {
 		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1" selected>Anu</option><option value="2">Bhola</option><option value="3">Zelikovsky</option></select>';
-
 	}
 	if (pic == 2) {
 		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2" selected>Bhola</option><option value="3">Zelikovsky</option></select>';
-
 	}
 	if (pic == 3) {
 		picOptions = '<select id="pictures"><option value="0">Henry</option><option value="1">Anu</option><option value="2">Bhola</option><option value="3" selected>Zelikovsky</option></select>';
-
 	}
 	document.getElementById('selectPic').innerHTML = picOptions;
 }
 
 function changePic() {
+	/*Need Fix: After the game is over and "Change Picture" button is clicked, the new board shows, but "shuffle" and "shuffle easy" buttons are disabled */
+	$("#memory_board").show();
+	$("#after_game").html("<div class='Homer'></div>").hide();
 	pic = document.getElementById('pictures').value;
 	updateboard();
 }
@@ -49,11 +51,12 @@ function changePic() {
 
 function newBoard() {
 	pic = Math.floor((Math.random() * 4));
-
 	var output = '';
+
 	for (var i = 0; i < memory_array.length; i++) {
 		output += '<div id="tile_' + i + '" class="tile" onclick="swap(' + i + ')"></div>';
 	}
+
 	document.getElementById('memory_board').innerHTML = output;
 	updateboard();
 	disablediv();
@@ -353,20 +356,19 @@ function swap(pos) {
 		if (memory_array.toString() == memory_arrayAns.toString()) {
 			disablediv();
 			clearInterval(timer);
-			alert("you win in " + (time - 1) + " seconds"); //replace with end animation
+			$("#memory_board").hide();
+			$("#after_game").html("<div class='ending_gif'></div>");
 			document.getElementById("win").className = "";
-			//document.getElementById("centering").innerHTML = "YOU WON!!!!";
 		}
 	}
 }
 
 function saveInfo() {
 	if (document.getElementById("name").value == "") {
-		alert("input a value")
+		alert("input a value");
 	} //check if name is blank
 	else {
 		document.getElementById("win").className = "hide";
-
 		var thename = document.getElementById("name").value;
 		var person = {
 			name: thename,
@@ -375,10 +377,10 @@ function saveInfo() {
 		};
 		leaderboard.push(person);
 		leaderboard.sort(function(a, b) {
-			return a.theTime - b.theTime
+			return a.theTime - b.theTime;
 		}); //sort leaderboard by time
 		var theleaderboard = "<table  align=\"center\">";
-		theleaderboard += "<th>Name</th><th>Moves</th><th>Time</th>"
+		theleaderboard += "<th>Name</th><th>Moves</th><th>Time</th>";
 		for (var a = 0; a < leaderboard.length; a++) {
 			if (a % 2 === 0) {
 				theleaderboard += '<tr class="even"><td>' + leaderboard[a].name + '</td><td>' + leaderboard[a].moves + '</td><td>' + leaderboard[a].theTime + ' seconds</td></tr>';

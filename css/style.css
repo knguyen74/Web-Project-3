@@ -103,3 +103,10 @@ h2,
     right: 0;
     text-align: right;
 }
+
+.ending_gif {
+    height: 270px;
+    width: 390px;
+    background: url('gifs/finished.gif');
+    margin: auto;
+}
