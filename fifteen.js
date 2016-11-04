@@ -19,8 +19,8 @@ var pic = 0;
 var leaderboard = [];
 
 function myTimer() {
-	document.getElementById("timer").innerHTML = time;
 	time++;
+	document.getElementById("timer").innerHTML = time;
 }
 
 function createPicOption() {
@@ -369,14 +369,15 @@ function swap(pos) {
 
 function saveInfo() {
 	if (document.getElementById("name").value == "") {
-		alert("input a value");
+		document.getElementById('lb').innerHTML = "Input a name";
+		document.getElementById("lb").className = "";
 	} //check if name is blank
 	else {
 		document.getElementById("win").className = "hide";
 		var thename = document.getElementById("name").value;
 		var person = {
 			name: thename,
-			theTime: (time - 1),
+			theTime: (time),
 			moves: totalMoves
 		};
 		leaderboard.push(person);
