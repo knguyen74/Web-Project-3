@@ -373,6 +373,7 @@ function swap(pos) {
 	}
 	if (update == true) {
 		totalMoves++;
+		document.getElementById("moves").innerHTML= "[" + totalMoves + "] moves";
 		removehoverall();
 		addhover();
 		updateboard();
@@ -382,7 +383,8 @@ function swap(pos) {
 			document.getElementById("btn1").className = "hide";
 			document.getElementById("btn2").className = "hide";
 			clearInterval(timer);
-			document.getElementById("objective").innerHTML="Sorry, the classes are already full before you even had the chance to register.";
+			document.getElementById("objective").innerHTML="Sorry! The classes are already full before you even had the chance to register.";
+			document.getElementById("moves").innerHTML = "";
 			$("#memory_board").hide();
 			$("#after_game").html("<div class='ending_gif'></div>");
 			document.getElementById("win").className = "";
